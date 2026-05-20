@@ -1,6 +1,5 @@
-package com.yank.pruebaMongoDb.dto;
+package com.yank.pruebaMongoDb.dto.response;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import lombok.Builder;
@@ -15,11 +14,9 @@ public class ProductResponse {
 
     private String category;
 
-    private BigDecimal price;
+    private Double price;
 
     private Integer stock;
-
-    private Boolean active;
 
     private List<String> tags;
 }

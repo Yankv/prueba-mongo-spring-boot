@@ -3,18 +3,17 @@ package com.yank.pruebaMongoDb.mapper;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.yank.pruebaMongoDb.dto.ProductRequest;
-import com.yank.pruebaMongoDb.dto.ProductResponse;
+import com.yank.pruebaMongoDb.dto.request.ProductCreateRequest;
+import com.yank.pruebaMongoDb.dto.response.ProductResponse;
 import com.yank.pruebaMongoDb.model.Product;
 
 public class ProductMapper {
-    public static Product toEntity(ProductRequest request) {
+    public static Product toEntity(ProductCreateRequest request) {
         return Product.builder()
                 .name(request.name())
                 .category(request.category())
                 .price(request.price())
                 .stock(request.stock())
-                .active(request.active())
                 .tags(request.tags())
                 .createdAt(LocalDateTime.now())
                 .build();
@@ -27,7 +26,6 @@ public class ProductMapper {
                 .category(product.getCategory())
                 .price(product.getPrice())
                 .stock(product.getStock())
-                .active(product.getActive())
                 .tags(product.getTags())
                 .build();
     }
