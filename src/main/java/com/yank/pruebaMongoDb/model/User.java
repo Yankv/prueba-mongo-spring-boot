@@ -1,10 +1,7 @@
 package com.yank.pruebaMongoDb.model;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -19,36 +16,30 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Document(collection = "products")
-public class Product {
+@Document(collection = "users")
+public class User {
     @Id
     private String id;
+
+    @Indexed(unique = true)
+    @Field("email")
+    private String email;
 
     @Field("name")
     private String name;
 
-    @Field("category")
-    private String category;
+    @Field("lastName")
+    private String lastName;
 
-    @Field("price")
-    private Double price;
+    @Field("phone")
+    private String phone;
 
-    @Field("stock")
-    private Integer stock;
+    // Embedded document for address
+    @Field("address")
+    private Address address;
 
     // Default value for active field
     @Builder.Default
     @Field("active")
     private Boolean active = true;
-
-    @Field("tags")
-    private List<String> tags;
-
-    @CreatedDate
-    @Field("createdAt")
-    private LocalDateTime createdAt;
-
-    @CreatedDate
-    @Field("updatedAt")
-    private LocalDateTime updatedAt;
 }

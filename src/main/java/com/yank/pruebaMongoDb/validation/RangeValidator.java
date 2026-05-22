@@ -6,6 +6,12 @@ import org.springframework.beans.BeanWrapperImpl;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
+/**
+ * Validator for the @ValidRange annotation, which checks that the value of a
+ * specified minimum field is less than or equal to a specified maximum field.
+ * This validator can be applied to any class containing the specified fields,
+ * as long as they implement Comparable.
+ */
 public class RangeValidator implements ConstraintValidator<ValidRange, Object> {
     private String minField;
     private String maxField;
